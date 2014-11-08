@@ -188,9 +188,9 @@ module Liquid
       date = if input.is_a?(String)
         case input.downcase
         when 'now', 'today'
-          Time.now
+          Time.respond_to?(:zone) ? Time.zone.now : Time.now
         else
-          Time.parse(input)
+          Time.respond_to?(:zone) ? Time.zone.parse(input) : Time.parse(input)
         end
       else
         input
