@@ -15,7 +15,8 @@ module Liquid
       '>'  => :>,
       '>=' => :>=,
       '<=' => :<=,
-      'contains' => lambda { |cond, left, right| left && right ? left.include?(right) : false }
+      'contains' => lambda { |cond, left, right| left && right ? left.include?(right) : false },
+      'startswith' => lambda { |cond, left, right| left && right ? left.to_s.start_with?(right.to_s) : false }
     }
 
     def self.operators
